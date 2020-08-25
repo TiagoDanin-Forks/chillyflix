@@ -12,7 +12,8 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Shortcuts(
       // needed for AndroidTV to be able to select
-      shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
+      //shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
+      shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent()},
       child: MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.blue,

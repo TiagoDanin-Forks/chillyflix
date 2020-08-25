@@ -5,9 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'package:chillyflix/Services/FanartService.dart';
 import 'package:chillyflix/Pages/HomePage.dart';
-import 'package:chillyflix/Services/TraktService.dart';
+import 'package:chillyflix/Services/TolokaService.dart';
 
 extension Precision on double {
       double toPrecision(int fractionDigits) {
@@ -15,7 +14,6 @@ extension Precision on double {
       return ((this * mod).round().toDouble() / mod);
     }
 }
-
 
 void main() {
   return runApp(MyApp()); 
@@ -27,20 +25,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<TraktService>(create: (_) => TraktService()),
-        Provider<FanartService>(create: (_) => FanartService()),
+        Provider<TolokaService>(create: (_) => TolokaService()),
       ],
       child: Shortcuts(
         // needed for AndroidTV to be able to select
-        shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
+        //shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
+        shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent()},
         child: MaterialApp(
-          title: 'ChillyFlix',
+          title: 'TolokaFilms',
           theme: ThemeData(
             fontFamily: GoogleFonts.openSans().fontFamily,
             primarySwatch: Colors.blueGrey,
             backgroundColor: Color.fromARGB(255, 35, 40, 50)
           ),
-          home: HomePage(title: 'ChillyFlix'),
+          home: HomePage(title: 'TolokaFilms'),
         ),
       ),
     );

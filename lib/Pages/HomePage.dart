@@ -1,13 +1,10 @@
 import 'package:chillyflix/Pages/SettingsPage.dart';
-import 'package:chillyflix/Tabs/HomeTab.dart';
-import 'package:chillyflix/Tabs/ShowsTab.dart';
 import 'package:chillyflix/Tabs/MoviesTab.dart';
 import 'package:flutter/material.dart';
 
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
-
 
   final String title;
 
@@ -16,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
 
   @override
   void initState() {
@@ -26,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 1,
         child: Scaffold(
           backgroundColor: Color.fromARGB(255, 35, 40, 50),
           appBar: AppBar(
@@ -36,15 +32,6 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Text(widget.title),
                 SizedBox(width: 50),
-                TabBar(
-                  isScrollable: true,
-                  indicatorColor: Color.fromARGB(255, 255, 60, 70),
-                  tabs: <Widget>[
-                    Tab(text: 'Home'),
-                    Tab(text: 'Movies'),
-                    Tab(text: 'Shows'),
-                  ],
-                )
               ],
             ),
             actions: <Widget>[
@@ -55,9 +42,7 @@ class _HomePageState extends State<HomePage> {
           body: Center(
             child: TabBarView(
               children: <Widget>[
-                HomeTab(),
                 MoviesTab(),
-                ShowsTab(),
               ],
             ),
           ),

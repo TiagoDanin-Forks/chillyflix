@@ -125,7 +125,9 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
             ],
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              buildThreadsDialog(context, widget.item);
+            },
             child: Text('PLAY'),
             color: Color.fromARGB(255, 255, 60, 70),
             textColor: Colors.white,
@@ -134,4 +136,35 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
       )
     ]);
   }
+}
+
+void buildThreadsDialog(BuildContext context, Movie item) {
+  var threads = List<Widget>();
+  item.threads.forEach((element) {
+    threads
+        .add(Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      FlatButton(
+        child: Text(element.title,
+            style: TextStyle(color: Color.fromARGB(255, 255, 180, 10))),
+        onPressed: () => {print(element.id)},
+      )
+    ]));
+/*     threads.add(FlatButton(
+      child: Text(element.title,
+          style: TextStyle(color: Color.fromARGB(255, 255, 180, 10))),
+          onPressed: ()=>{
+            print(element.id)
+          },
+    )); */
+  });
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        actions: threads,
+      );
+    },
+  );
 }
